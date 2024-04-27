@@ -21,8 +21,10 @@ export default function Navbar() {
 
                         </span>
                     </button>
-
-                    <Link className="btn btn-outline-light" to="addUser">Add User</Link>
+                    <div className="ml-auto">
+                        <Link className="btn btn-outline-light mx-2" to="addUser">Sign in</Link>
+                        <Link className="btn btn-outline-light" to="loginUser">Login</Link>
+                    </div>
                 </div>
             </nav>
         </div>

@@ -11,10 +11,12 @@ export default function EditUser() {
     const [user, setUser] = useState({
         name: "",
         surname: "",
-        email: ""
+        email: "",
+        phoneNumber: "",
+        passwd: ""
     });
 
-    const { name, surname, email } = user;
+    const { name, surname, email , phoneNumber, passwd} = user;
 
     const onInputChange = (e) => {
         setUser({...user,[e.target.name]: e.target.value});
@@ -72,6 +74,38 @@ export default function EditUser() {
                                 placeholder="Enter your email address"
                                 name="email"
                                 value={email}
+                                onChange={(e) => onInputChange(e)}
+                            />
+                        </div>
+                        <div className="mb-3">
+                            <label htmlFor="phoneNumber" className="form-label">Phone</label>
+                            <input
+                                type={"tel"}
+                                className="form-control"
+                                placeholder="Enter your phone number address"
+                                name="phoneNumber"
+                                value={phoneNumber}
+                                onChange={(e) => onInputChange(e)}
+                            />
+                        </div>
+                        <div className="mb-3">
+                            <label htmlFor="oldPasswd" className="form-label">Old Password</label>
+                            <input
+                                type={"password"}
+                                className="form-control"
+                                placeholder="Enter your passwd address"
+                                name="oldPasswd"
+                                //onChange={(e) => onInputChange(e)}
+                            />
+                        </div>
+                        <div className="mb-3">
+                            <label htmlFor="passwd" className="form-label">Password</label>
+                            <input
+                                type={"password"}
+                                className="form-control"
+                                placeholder="Enter your passwd address"
+                                name="passwd"
+                                //value={passwd}
                                 onChange={(e) => onInputChange(e)}
                             />
                         </div>

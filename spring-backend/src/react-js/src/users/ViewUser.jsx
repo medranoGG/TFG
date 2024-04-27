@@ -8,7 +8,9 @@ export default function ViewUser() {
     const [user, setUser] = useState({
         name: "",
         surname: "",
-        email: ""
+        email: "",
+        phoneNumber: "",
+        passwd: ""
     });
 
     const  {id} = useParams();
@@ -34,19 +36,23 @@ export default function ViewUser() {
 
                         <div className="card-header">
                             Details of user id: {user.id}
-                                <ul className="list-group list-group-flush">
-                                    <li className="list-group-item mt-2 py-2">
-                                        <b>Name: </b>{user.name}
-                                    </li>
-                                    <li className="list-group-item mt-2 py-2">
-                                        <b>SurName: </b>
-                                        {user.surname}
-                                    </li>
-                                    <li className="list-group-item mt-2 py-2">
-                                        <b>Email: </b>
-                                        {user.email}
-                                    </li>
-                                </ul>
+                            <ul className="list-group list-group-flush">
+                                <li className="list-group-item mt-2 py-2">
+                                    <b>Name: </b>{user.name}
+                                </li>
+                                <li className="list-group-item mt-2 py-2">
+                                    <b>SurName: </b>
+                                    {user.surname}
+                                </li>
+                                <li className="list-group-item mt-2 py-2">
+                                    <b>Email: </b>
+                                    {user.email}
+                                </li>
+                                <li className="list-group-item mt-2 py-2">
+                                    <b>Phone: </b>
+                                    {user.phoneNumber}
+                                </li>
+                            </ul>
                         </div>
                     </div>
                     <Link className="btn btn-outline-primary mt-3" to={"/"}>Back To Home</Link>

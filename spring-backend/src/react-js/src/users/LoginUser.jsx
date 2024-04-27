@@ -9,10 +9,12 @@ export default function AddUser() {
     const [user, setUser] = useState({
         name: "",
         surname: "",
-        email: ""
+        email: "",
+        phoneNumber: "",
+        passwd: ""
     });
 
-    const { name, surname, email } = user;
+    const { name, surname, email , phoneNumber, passwd} = user;
 
     const onInputChange = (e) => {
         setUser({...user,[e.target.name]: e.target.value});
@@ -31,28 +33,7 @@ export default function AddUser() {
                     <h2 className="text-center m-4">Register User</h2>
 
                     <form onSubmit={(e) => onSubmit(e)}>
-                        <div className="mb-3">
-                            <label htmlFor="name" className="form-label">Name</label>
-                            <input
-                                type={"text"}
-                                className="form-control"
-                                placeholder="Enter your name"
-                                name="name"
-                                value={name}
-                                onChange={(e) => onInputChange(e)}
-                            />
-                        </div>
-                        <div className="mb-3">
-                            <label htmlFor="surname" className="form-label">Surname</label>
-                            <input
-                                type={"text"}
-                                className="form-control"
-                                placeholder="Enter your surname"
-                                name="surname"
-                                value={surname}
-                                onChange={(e) => onInputChange(e)}
-                            />
-                        </div>
+
                         <div className="mb-3">
                             <label htmlFor="email" className="form-label">Email</label>
                             <input
@@ -61,6 +42,17 @@ export default function AddUser() {
                                 placeholder="Enter your email address"
                                 name="email"
                                 value={email}
+                                onChange={(e) => onInputChange(e)}
+                            />
+                        </div>
+                        <div className="mb-3">
+                            <label htmlFor="passwd" className="form-label">Password</label>
+                            <input
+                                type={"passwd"}
+                                className="form-control"
+                                placeholder="Enter your passwd address"
+                                name="passwd"
+                                value={passwd}
                                 onChange={(e) => onInputChange(e)}
                             />
                         </div>

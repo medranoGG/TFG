@@ -44,7 +44,8 @@ public class UserController {
         cliente.setName(clienteRequest.getName());
         cliente.setSurname(clienteRequest.getSurname());
         cliente.setEmail(clienteRequest.getEmail());
-
+        cliente.setPhoneNumber(clienteRequest.getPhoneNumber());
+        cliente.setPasswd(clienteRequest.getPasswd());
         User clienteActualizado = clienteRepository.save(cliente);
         return  ResponseEntity.ok(clienteActualizado);
     }

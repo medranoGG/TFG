@@ -34,6 +34,7 @@ export default function Home() {
                         <th scope="col">Name</th>
                         <th scope="col">Surname</th>
                         <th scope="col">Email</th>
+                        <th scope="col">Phone</th>
                         <th scope="col">Action</th>
                     </tr>
                     </thead>
@@ -46,11 +47,15 @@ export default function Home() {
                                 <td>{user.name}</td>
                                 <td>{user.surname}</td>
                                 <td>{user.email}</td>
+                                <td>{user.phoneNumber}</td>
+
 
                                 <td>
-                                    <Link className="btn btn-outline-success mx-2" to={`/viewUser/${user.id}`}>View</Link>
+                                    <Link className="btn btn-outline-success mx-2"
+                                          to={`/viewUser/${user.id}`}>View</Link>
                                     <Link className="btn btn-light mx-2" to={`/editUser/${user.id}`}>Edit</Link>
-                                    <button className="btn btn-dark mx-2" onClick={() => deleteUser(user.id)}>Delete</button>
+                                    <button className="btn btn-dark mx-2" onClick={() => deleteUser(user.id)}>Delete
+                                    </button>
                                 </td>
                             </tr>
                         ))

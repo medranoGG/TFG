@@ -7,6 +7,7 @@ import AddUser from "./users/AddUser";
 import EditUser from "./users/EditUser";
 import ViewUser from "./users/ViewUser";
 import LoginUser from "./users/LoginUser";
+import Index from "./pages/Index";
 
 
 function App() {
@@ -15,9 +16,10 @@ function App() {
         <Router>
         <Navbar />
             <Routes>
-                <Route exact path="/" element={<Home />} />
+                <Route exact path="/" element={<Index />} />
+                <Route exact path="/home" element={<Home />} />
                 <Route exact path="/addUser" element={<AddUser />} />
-                <Route exact path="/loginUser" element={<LoginUser />} />
+                <Route exact path="/login" element={<LoginUser />} />
                 <Route exact path="/editUser/:id" element={<EditUser />} />
                 <Route exact path="/viewUser/:id" element={<ViewUser />} />
             </Routes>

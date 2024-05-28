@@ -2,13 +2,15 @@ package com.springbackend.controller;
 
 import com.springbackend.model.User;
 import com.springbackend.repository.UserRepository;
+import com.springbackend.service.UserService;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @RestController
 @RequestMapping("/api/v1")
@@ -16,49 +18,42 @@ import java.util.Map;
 public class UserController {
 
     @Autowired
-    private UserRepository clienteRepository;
+    private UserService userService;
 
-    @GetMapping("/users")
+
+    @GetMapping("/") // OK
+    public Map<String, Object> privatePage(HttpServletRequest request) {
+        Map<String, Object> response = new HashMap<>();
+        response.put("isUser", request.isUserInRole("USER"));
+        response.put("isAdmin", request.isUserInRole("ADMIN"));
+        return response;
+    }
+
+    @GetMapping("/users") // OK
     public List<User> getAllUsers(){
-        return clienteRepository.findAll();
+        return userService.getAllUsers();
     }
 
-    @PostMapping("/users")
-    public User saveUser(@RequestBody User cliente){
-        return clienteRepository.save(cliente);
+    @PostMapping("/users") // OK
+    public void saveUser(@RequestBody User u){
+        userService.saveUser(u);
     }
 
-    @GetMapping("/users/{id}")
-    public ResponseEntity<User> getUserById(@PathVariable Long id){
-        User cliente = clienteRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("El cliente con ese ID no existe: " + id));
-
-        return  ResponseEntity.ok(cliente);
+    @GetMapping("/users/{id}") // OK
+    public User getUserById(@PathVariable Long id){
+        return userService.getUserById(id);
     }
 
-    @PutMapping("/users/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User clienteRequest){
-        User cliente = clienteRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("El cliente con ese ID no existe: " + id));
-
-        cliente.setName(clienteRequest.getName());
-        cliente.setSurname(clienteRequest.getSurname());
-        cliente.setEmail(clienteRequest.getEmail());
-        cliente.setPhoneNumber(clienteRequest.getPhoneNumber());
-        cliente.setPasswd(clienteRequest.getPasswd());
-        User clienteActualizado = clienteRepository.save(cliente);
-        return  ResponseEntity.ok(clienteActualizado);
+    @PutMapping("/users/{id}") // OK
+    public void updateUser(@PathVariable Long id, @RequestBody User uRequest){
+       userService.updateUser(id,uRequest);
     }
 
-    @DeleteMapping("/users/{id}")
-    public ResponseEntity<Map<String,Boolean>> deleteUser(@PathVariable Long id){
-        User cliente = clienteRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("El cliente con ese ID no existe: " + id));
 
-        clienteRepository.delete((cliente));
-        Map<String,Boolean> response = new HashMap<>();
-        response.put("deleted",Boolean.TRUE);
-        return ResponseEntity.ok(response);
+    @DeleteMapping("/users/{id}") // OK
+    public void deleteUser(@PathVariable Long id){
+        userService.deleteUser(id);
     }
+
 
 }

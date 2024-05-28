@@ -51,11 +51,9 @@ export default function Home() {
 
 
                                 <td>
-                                    <Link className="btn btn-outline-success mx-2"
-                                          to={`/viewUser/${user.id}`}>View</Link>
+                                    <Link className="btn btn-outline-success mx-2" to={`/viewUser/${user.id}`}>View</Link>
                                     <Link className="btn btn-light mx-2" to={`/editUser/${user.id}`}>Edit</Link>
-                                    <button className="btn btn-dark mx-2" onClick={() => deleteUser(user.id)}>Delete
-                                    </button>
+                                    <button className="btn btn-dark mx-2" onClick={() => deleteUser(user.id)}>Delete</button>
                                 </td>
                             </tr>
                         ))
